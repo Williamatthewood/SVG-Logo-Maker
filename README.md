@@ -16,3 +16,11 @@ THEN an SVG file is created named `logo.svg`
 AND the output text "Generated logo.svg" is printed in the command line
 WHEN I open the `logo.svg` file in a browser
 THEN I am shown a 300x200 pixel image that matches the criteria I entered
+
+** Must have a Triangle, Circle, and Square classes (recommended a Shape class they inherit from)
+** Each shape class should be TESTED for a render() method that returns a string for the SVG file with the given shape color
+** Walkthrough video must show all test passing from the command line
+Example:
+    const shape = new Triangle();
+    shape.setColor("blue");
+    expect(shape.render()).toEqual('<polygon points="150, 18 244, 182 56, 182" fill="blue" />');
