@@ -38,7 +38,8 @@ function init(){
             }
         ])
         .then((answers) => {
-            generateLogo("./examples/logo.svg", answers);
+            console.log(answers);
+            // generateLogo("./examples/logo.svg", answers);
         })
 }
 
