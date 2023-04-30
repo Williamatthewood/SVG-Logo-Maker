@@ -5,7 +5,7 @@ const Triangle = require('./lib/triangle');
 const Square = require('./lib/square');
 
 const questions = [
-    'Enter up to 3 characters for your logo.',
+    'Enter the text for your logo. Make sure it is no longer than 3 characters',
     'What color should the text be? Enter a color or hexadecimal number.',
     'What shape should your logo be?',
     'What should the shape be? Enter a color or hexadecimal number.',
@@ -46,27 +46,28 @@ function init(){
 }
 
 function generateLogo(filePath, data) {
-    //code needs to:
     // destructure the responses
     let { text, textColor, shape, fillColor } = data;
 
+    // verify the input is no longer than 3 characters
+    if (text.length > 3){
+        return console.log('Text for logo is too long. Please restart the application and make sure your logo text is 3 characters or less.');
+    }
     // check the shape to determine which class to generate
     switch (shape) {
         case 'Circle':
             shape = new Circle(text, textColor, fillColor);
             break;
         case 'Triangle':
-            console.log('Triangle was chosen');
+            shape = new Triangle(text, textColor, fillColor);
             break;
         case 'Square':
-            console.log('Square was chosen');
+            shape = new Square(text, textColor, fillColor);
             break;
         default:
             console.log('No valid shape was provided');
             break;
     }
-    // verify the input is no longer than 3 characters
-    //      Maybe use max-length package?
     // writeFile with the passed filePath and file name
     fs.writeFile(filePath, shape.render(), (err) => err ? console.error(err) : console.log('Generated logo.svg'));
 }
